@@ -26,22 +26,27 @@ starGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 // Use imported image for the sprite
 const sprite = new THREE.TextureLoader().load(circleImg);
 const starMaterial = new THREE.PointsMaterial({
-  color: 0xaaaaaa,
-  size: 0.7,
+  color: 0xffffff, // Make stars white
+  size: 1.2,       // Slightly bigger for more glow
   map: sprite,
   transparent: true,
+  blending: THREE.AdditiveBlending, // Additive blending for glow effect
+  depthWrite: false,
 });
 const stars = new THREE.Points(starGeo, starMaterial);
 scene.add(stars);
 
-// Add camera movement on scroll
+// Smooth camera movement on scroll
+let targetZ = camera.position.z;
 window.addEventListener('scroll', () => {
-  camera.position.z = 1 + window.scrollY / 10;
+  targetZ = 1 - window.scrollY / 10;
 });
 
 animate();
 
 function animate() {
   requestAnimationFrame(animate);
+  // Smoothly interpolate camera position
+  camera.position.z += (targetZ - camera.position.z) * 0.08;
   renderer.render(scene, camera);
 }
