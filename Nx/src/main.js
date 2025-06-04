@@ -24,6 +24,8 @@ const arcAngle = Math.PI / 0.1;
 const rectGeometry = new THREE.BoxGeometry(rectWidth, rectHeight, rectDepth);
 const rectMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
 
+const rowGroup = new THREE.Group();
+
 for (let i = 0; i < cubesInRow; i++) {
   const t = i / (cubesInRow - 1);
   const angle = -arcAngle / 2 + t * arcAngle;
@@ -35,10 +37,16 @@ for (let i = 0; i < cubesInRow; i++) {
   const rect = new THREE.Mesh(rectGeometry, rectMaterial);
   rect.position.set(x, y, z);
 
-  rect.lookAt(20, 0, 0);
+  // Optional: rotate each rectangle if you want
+  rect.rotation.y = Math.PI / 4;
 
-  scene.add(rect);
+  rowGroup.add(rect);
 }
+
+scene.add(rowGroup);
+
+// Now you can rotate the whole row of cubes:
+rowGroup.rotation.y = Math.PI / 4; // rotate 45 degrees around Y axis
 
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(5, 5, 5);
@@ -51,6 +59,7 @@ const lightHelper = new THREE.PointLightHelper(pointLight);
 const gridHelper = new THREE.GridHelper(200, 50);
 scene.add(lightHelper);
 scene.add(gridHelper);
+rowGroup.rotation.x = 60
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -64,6 +73,7 @@ function addStar() {
 Array(200).fill().forEach(addStar);
 function animate() {
   requestAnimationFrame(animate);
+  rowGroup.rotation.y += 0.001; // animate rotation
   renderer.render(scene, camera);
 }
 animate();
