@@ -333,6 +333,14 @@ canvas {
   display: flex;
 }
 
+#formMessage {
+  color: red;
+  margin-top: 10px;
+  font-size: 0.85em;
+  min-height: 1.2em;
+  transition: color 0.3s;
+}
+
 .modal_inner {
   display: flex;
   flex-direction: row;
