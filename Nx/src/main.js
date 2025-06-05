@@ -84,6 +84,11 @@ document.addEventListener("DOMContentLoaded", function() {
     { threshold: 0.2 }
   );
   clientCards.forEach(card => cardObserver.observe(card));
+
+  const contactForm = document.querySelector('.modal_form_card form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', sendEmail);
+  }
 });
 
 const hamMenu = document.querySelector(".ham-menu");
@@ -115,4 +120,30 @@ if (closeModalBtn) {
   closeModalBtn.addEventListener('click', () => {
     modal.classList.remove('open');
   });
+}
+
+function sendEmail(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('mesaj').value.trim();
+
+  if (name && email && message) {
+    const params = {
+      name: name,
+      email: email,
+      message: message
+    };
+
+    emailjs.send("service_7hku12j", "template_9n0794f", params)
+      .then(function(response) {
+        alert('Email sent successfully!');
+        document.getElementById('modal').classList.remove('open');
+      }, function(error) {
+        alert('Failed to send email. Please try again.');
+      });
+  } else {
+    alert('Please fill in all fields.');
+  }
 }
