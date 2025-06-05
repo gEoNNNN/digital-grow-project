@@ -5,6 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   </head>
   <body>
     <canvas id="bg"></canvas>
@@ -45,8 +46,31 @@
         <button class="cool-btn" id="openModal">Contacteaza-ne</button>
         <div class="openModal" id="modal">
           <div class="modal_inner">
-            <h1>hi</h1>
-            <button id="closeModal">Inchide</button>
+            <div class="modal_contact">
+              <p class="modal_text">Hai să vorbim despre ceva interesant, împreună!</p>
+              <p><i class="fas fa-envelope"></i> contact@exemplu.com</p>
+              <p><i class="fas fa-phone"></i> (+373) 675 243 90</p>
+              <p><i class="fas fa-map-marker-alt"></i> Strada Inovației 12, Chișinău, Moldova</p>
+            </div>
+            <div class="modal_form_card">
+              <p>Sunt interesat(ă) în:</p>
+              <form action="/action_page.php">
+                <input type="checkbox" id="web" name="web" value="Dezvoltare web">
+                <label for="web"> Dezvoltare web</label><br>
+                <input type="checkbox" id="app" name="app" value="Aplicații mobile">
+                <label for="app"> Aplicații mobile</label><br>
+                <input type="checkbox" id="consult" name="consult" value="Consultanță tehnologică">
+                <label for="consult"> Consultanță tehnologică</label><br><br>
+                <label for="name">Numele:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email"><br><br>
+                <label for="mesaj">Mesaj:</label>
+                <input type="text" id="mesaj" name="mesaj"><br><br>
+                <input type="submit" value="Trimite">
+              </form>
+            </div>
+            <button id="closeModal" aria-label="Închide">&times;</button>
           </div>
         </div>
       </div>
