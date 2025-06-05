@@ -31,20 +31,46 @@ canvas {
   position: relative;
   width: 100vw;
   height: 100%;
-  color: white;
+  color: #F1FCFD;
   font-family: Lexend Peta, sans-serif;
   font-size: 5vw;
   text-align: center;
-  -webkit-animation: glow 1s ease-in-out infinite alternate;
-  -moz-animation: glow 1s ease-in-out infinite alternate;
-  animation: glow 1s ease-in-out infinite alternate;
+  text-shadow: 0 0 0.3vw #fff, 0 0 6vw #fff, 0 0 0.9vw #fff;
 }
 
-@-webkit-keyframes glow {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
-  }
-  to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff, 0 0 80px #fff;
-  }
+.logo {
+  position: fixed;
+  width: 9vw;
+  display: block;
+  margin: -25vw auto 0 auto;
+}
+
+.nav_bar {
+  width: 30vw;
+  height: 4vw;
+  background: white;
+  position: absolute;
+  z-index: 2;
+  margin: -23vw auto 0 auto;
+  border-radius: 4vw;
+  left: 50%;
+  transform: translate(-50%);
+  box-shadow: 0 0 0.3vw #fff, 0 0 6vw #fff, 0 0 0.9vw #fff;
+}
+
+.horizontal-list {
+  list-style: none; 
+  padding: 0;
+  margin: 0;
+  display: flex;          
+  gap: 1rem;         
+}
+
+.horizontal-list a {
+  text-decoration: none;
+}
+
+.horizontal-list li {
+  text-decoration: none;
+  gap: 5rem;
 }
