@@ -202,5 +202,14 @@ canvas {
 
 .about_container p {
   font-family: Lexend Peta, sans-serif;
-  color: #fff;
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1.5s cubic-bezier(.4,2,.6,1) 0.5s,   /* 0.5s delay */
+    transform 1.5s cubic-bezier(.4,2,.6,1) 0.5s; /* 0.5s delay */
+}
+
+.about_container p.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
