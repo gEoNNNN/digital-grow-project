@@ -70,6 +70,25 @@ document.addEventListener("DOMContentLoaded", function() {
     { threshold: 0.2 }
   );
   aboutParagraphs.forEach(p => observer.observe(p));
+
+  //scroll anim
+  const clientCards = document.querySelectorAll('.card');
+  const cardObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+  clientCards.forEach(card => cardObserver.observe(card));
+
+  const contactForm = document.querySelector('.modal_form_card form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', sendEmail);
+  }
 });
 
 const hamMenu = document.querySelector(".ham-menu");
@@ -82,14 +101,49 @@ hamMenu.addEventListener("click", () => {
 });
 
 
-const openBtn = document.getElementById("openModal");
-const closeBtn = document.getElementById("closeModal");
-const modal = document.getElementById("modal");
-
-openBtn.addEventListener("click", () => {
-  modal.classList.add("open");
+document.querySelectorAll('a, button').forEach(el => {
+  if (
+    el.textContent.trim().toLowerCase() === 'contacte' ||
+    el.textContent.trim().toLowerCase() === 'contacteaza-ne'
+  ) {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.classList.add('open');
+    });
+  }
 });
 
-closeBtn.addEventListener("click", () => {
-  modal.classList.remove("open");
-});
+const modal = document.getElementById('modal');
+const closeModalBtn = document.getElementById('closeModal');
+
+if (closeModalBtn) {
+  closeModalBtn.addEventListener('click', () => {
+    modal.classList.remove('open');
+  });
+}
+
+function sendEmail(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('mesaj').value.trim();
+
+  if (name && email && message) {
+    const params = {
+      name: name,
+      email: email,
+      message: message
+    };
+
+    emailjs.send("service_7hku12j", "template_9n0794f", params)
+      .then(function(response) {
+        alert('Email sent successfully!');
+        document.getElementById('modal').classList.remove('open');
+      }, function(error) {
+        alert('Failed to send email. Please try again.');
+      });
+  } else {
+    alert('Please fill in all fields.');
+  }
+}

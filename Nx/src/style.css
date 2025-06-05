@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&display=swap');
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px;
+}
+
 body {
   position: absolute;
   margin: 0;
   padding: 0;
-  min-height: 300vh;
+  min-height: 270vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -266,6 +271,16 @@ canvas {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transform: translateY(60px);
+  transition:
+    opacity 2.5s cubic-bezier(.4,2,.6,1),
+    transform 2.5s cubic-bezier(.4,2,.6,1);
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card img {
@@ -292,6 +307,16 @@ canvas {
   background: transparent;
 }
 
+.modal_text {
+  font-family: 'Lexend Peta', sans-serif;
+  color: #fff;
+  font-size: 3vw;
+  text-align: left;
+  margin-bottom: 2vw;
+  text-shadow: 0 0 0.3vw #fff, 0 0 6vw #fff, 0 0 0.9vw ;
+  width: 50vw;
+}
+
 .openModal {
   display: none;
   position: fixed;
@@ -300,7 +325,6 @@ canvas {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(10, 10, 10, 0.75);
   align-items: center;
   justify-content: center;
 }
@@ -310,38 +334,98 @@ canvas {
 }
 
 .modal_inner {
+  display: flex;
+  flex-direction: row;
+  gap: 3vw;
   background: #111;
   color: #fff;
   border-radius: 2vw;
   box-shadow: 0 0 1vw #fff, 0 0 2vw #e0b1cb, 0 0 0.5vw #fff;
   padding: 3vw 4vw;
-  min-width: 280px;
+  min-width: 600px;
   max-width: 90vw;
-  text-align: center;
+  text-align: left;
   position: relative;
   font-family: 'Lexend Peta', sans-serif;
 }
 
-#closeModal {
-  margin-top: 2vw;
-  padding: 0.7vw 2vw;
-  font-size: 1.2vw;
-  font-family: 'Lexend Peta', sans-serif;
-  font-weight: 600;
-  color: #111;
+.modal_contact {
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.7vw;
+  font-size: 1.1vw;
+}
+
+.modal_contact i {
+  margin-right: 0.7em;
+  color: #e0b1cb;
+  min-width: 1.2em;
+  text-align: center;
+}
+
+.modal_form_card {
   background: #fff;
+  color: #111;
+  border-radius: 1.5vw;
+  box-shadow: 0 0 0.5vw #e0b1cb;
+  padding: 2vw 2vw;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1vw;
+}
+
+.modal_form_card label {
+  font-weight: 600;
+  margin-right: 0.5vw;
+}
+
+.modal_form_card input[type="text"] {
+  width: 90%;
+  padding: 0.4vw;
+  margin-bottom: 1vw;
+  border-radius: 0.5vw;
+  border: 1px solid #e0b1cb;
+  font-size: 1vw;
+}
+
+.modal_form_card input[type="checkbox"] {
+  margin-right: 0.5vw;
+}
+
+.modal_form_card input[type="submit"] {
+  background: linear-gradient(90deg, #e5e5e5 0%, #e0b1cb 100%);
+  color: #0b132b;
+  font-weight: 600;
   border: none;
-  border-radius: 2vw;
-  box-shadow: 0 0 0.3vw #fff, 0 0 1vw #fff;
+  border-radius: 1vw;
+  padding: 0.7vw 2vw;
+  font-size: 1vw;
   cursor: pointer;
+  margin-top: 1vw;
+  box-shadow: 0 2px 12px rgba(224, 177, 203, 0.15);
   transition: background 0.3s, color 0.3s, transform 0.2s;
 }
 
-#closeModal:hover,
-#closeModal:focus {
+.modal_form_card input[type="submit"]:hover {
   background: #e0b1cb;
-  color: #111;
-  transform: scale(1.05);
+  color: #fff;
+  transform: scale(1.04);
+}
+
+#closeModal {
+  position: absolute;
+  top: 0vw;
+  right: 1vw;
+  font-size: 4vw;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
 }
 
 /* Responsive Styles */
@@ -639,5 +723,113 @@ canvas {
     max-width: 100vw;
     width: 100vw;
   }
+}
 
+@media (max-width: 1000px) {
+  .modal_inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4vw;
+    padding: 6vw 2vw 4vw 2vw;
+    min-width: unset;
+    max-width: 70vw;
+    width: 96vw;
+    border-radius: 4vw;
+  }
+  .modal_contact, .modal_form_card {
+    width: 100%;
+    min-width: unset;
+    padding: 3vw 2vw;
+    box-sizing: border-box;
+  }
+  #closeModal {
+    font-size: 7vw;
+    width: 7vw;
+    height: 7vw;
+    top: 2vw;
+    right: 2vw;
+    line-height: 7vw;
+  }
+   .modal_inner,
+  .modal_contact,
+  .modal_form_card,
+  .modal_form_card label,
+  .modal_form_card input,
+  .modal_form_card p {
+    font-size: 1.5vw;
+  }
+  .modal_text {
+    font-size: 3vw;
+    width: 60vw;
+  }
+}
+
+@media (max-width: 650px) {
+  .modal_inner,
+  .modal_contact,
+  .modal_form_card,
+  .modal_form_card label,
+  .modal_form_card input,
+  .modal_form_card p {
+    font-size: 2vw;
+  }
+  .modal_text {
+    font-size: 4vw;
+    width: 60vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .modal_inner,
+  .modal_contact,
+  .modal_form_card,
+  .modal_form_card label,
+  .modal_form_card input,
+  .modal_form_card p {
+    font-size: 3vw;
+  }
+  .modal_text {
+    font-size: 4vw;
+    width: 60vw;
+  }
+}
+
+@media (max-width: 1000px) {
+  .modal_form_card input[type="text"] {
+    font-size: 3vw;
+    padding: 1vw;
+    border-radius: 1vw;
+    width: 95%;
+  }
+  .modal_form_card input[type="submit"] {
+    font-size: 3vw;
+    padding: 1vw 4vw;
+    border-radius: 2vw;
+    margin-top: 2vw;
+  }
+}
+@media (max-width: 650px) {
+  .modal_form_card input[type="text"] {
+    font-size: 4vw;
+    padding: 1.5vw;
+    border-radius: 2vw;
+  }
+  .modal_form_card input[type="submit"] {
+    font-size: 4vw;
+    padding: 2vw 6vw;
+    border-radius: 3vw;
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 400px) {
+  .modal_inner {
+    width: 85vw;
+    padding: 3vw 1vw;
+    border-radius: 2vw;
+  }
+  .modal_contact, .modal_form_card {
+    max-width: 95vw;
+    width: 100%;
+    padding: 2vw 1vw;
+  }
 }
