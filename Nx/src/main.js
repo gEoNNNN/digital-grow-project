@@ -82,14 +82,23 @@ hamMenu.addEventListener("click", () => {
 });
 
 
-const openBtn = document.getElementById("openModal");
-const closeBtn = document.getElementById("closeModal");
-const modal = document.getElementById("modal");
-
-openBtn.addEventListener("click", () => {
-  modal.classList.add("open");
+document.querySelectorAll('a, button').forEach(el => {
+  if (
+    el.textContent.trim().toLowerCase() === 'contacte' ||
+    el.textContent.trim().toLowerCase() === 'contacteaza-ne'
+  ) {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.classList.add('open');
+    });
+  }
 });
 
-closeBtn.addEventListener("click", () => {
-  modal.classList.remove("open");
-});
+const modal = document.getElementById('modal');
+const closeModalBtn = document.getElementById('closeModal');
+
+if (closeModalBtn) {
+  closeModalBtn.addEventListener('click', () => {
+    modal.classList.remove('open');
+  });
+}
