@@ -27,7 +27,7 @@ canvas {
 }
 
 .home_company_name {
-  bottom: 3vw;
+  right: 16vw;
   position: relative;
   width: 100vw;
   height: 100%;
@@ -38,6 +38,21 @@ canvas {
   text-shadow: 0 0 0.3vw #fff, 0 0 6vw #fff, 0 0 0.9vw #fff;
 }
 
+.home_text {
+  top: -2vw;
+  left: 13vw;
+  position: relative;
+  width: 40vw;
+  height: 100%;
+  color: #F1FCFD;
+  font-family: Lexend Peta, sans-serif;
+  font-size: 1vw;
+  text-align: left;
+  text-shadow: 0 0 0.3vw #fff, 0 0 6vw #fff, 0 0 0.9vw #fff;
+  bottom: 7vw;
+  font-weight: 200;
+}
+
 .logo {
   position: fixed;
   width: 9vw;
@@ -46,31 +61,52 @@ canvas {
 }
 
 .nav_bar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 30vw;
   height: 4vw;
   background: white;
-  position: absolute;
   z-index: 2;
-  margin: -23vw auto 0 auto;
   border-radius: 4vw;
-  left: 50%;
-  transform: translate(-50%);
   box-shadow: 0 0 0.3vw #fff, 0 0 6vw #fff, 0 0 0.9vw #fff;
+  margin-top: 2vw;
 }
 
 .horizontal-list {
-  list-style: none; 
+  margin-top: 0.8vw;
+  list-style: none;
   padding: 0;
-  margin: 0;
-  display: flex;          
-  gap: 1rem;         
-}
-
-.horizontal-list a {
-  text-decoration: none;
+  margin-bottom: 0;
+  display: flex;
+  gap: 1rem;
 }
 
 .horizontal-list li {
+  margin: 0 1vw;
+  border-radius: 2vw;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.horizontal-list a {
+  display: block;
+  padding: 0.7vw 2vw;
+  color: #222;
+  font-weight: 600;
+  border-radius: 2vw;
+  background: linear-gradient(90deg, #e5e5e5 0%, #e0b1cb 100%);
+  color: #0b132b;
+  box-shadow: 0 2px 12px rgba(0, 198, 251, 0.2);
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
   text-decoration: none;
-  gap: 5rem;
+}
+
+.horizontal-list a:hover,
+.horizontal-list a:focus {
+  background: transparent;
+  color: #222;
+  box-shadow: none;
 }
