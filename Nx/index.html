@@ -18,13 +18,37 @@
             <li><a href="">Contacte</a></li>
           </ul>
         </div>
+        <div class="nav_bar_mobile">
+          <div class="off-screen-menu">
+            <ul>
+              <li><a href="#">Acasa</a></li>
+              <li><a href="#">Despre Noi</a></li>
+              <li><a href="#">Contacte</a></li>
+            </ul>
+          </div>
+
+          <nav>
+            <div class="ham-menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </nav>
+
+        </div>
       </div>
       <div>
         <h1 class="home_company_name">NEXAWORKS</h1>
         <p class="home_text"> 
           Construim viitorul digital, pixel cu pixel, prin tehnologie inteligentă, design curat și inovație continuă, punând mereu accent pe detaliu, funcționalitate și experiența utilizatorului. Îmbinăm creativitatea cu performanța tehnologică pentru a livra soluții digitale sustenabile, scalabile și relevante, contribuind activ la transformarea digitală a societății și modelând cu responsabilitate lumea de mâine.
         </p>
-        <button class="cool-btn">Click Me</button>
+        <button class="cool-btn" id="openModal">Contacteaza-ne</button>
+        <div class="openModal" id="modal">
+          <div class="modal_inner">
+            <h1>hi</h1>
+            <button id="closeModal">Inchide</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -42,6 +66,15 @@
             Construim mai mult decât produse — construim parteneriate de durată și contribuim la transformarea digitală a celor care vor să evolueze odată cu lumea.
           </p>
         </div>
+        <img src="/assets/img/team.jpg" class="about_team_image">
+      </div>
+      <h1 class="clients_title">Clientii Nosrei:</h1>
+      <div class="clients">
+        <ul>
+          <li><div class="card"><img src="/assets/img/nasa.png" class="nasa"></div></li>
+          <li><div class="card"><img src="/assets/img/spacex.png" class="spacex"></div></li>
+          <li><div class="card"><img src="/assets/img/blueorigin.png" class="blueorigin"></div></li>
+        </ul>
       </div>
     </section>
     <script type="module" src="/src/main.js"></script>
