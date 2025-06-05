@@ -13,7 +13,6 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Create star positions
 const starCount = 10000;
 const positions = new Float32Array(starCount * 3);
 for (let i = 0; i < starCount * 3; i++) {
@@ -23,20 +22,24 @@ for (let i = 0; i < starCount * 3; i++) {
 const starGeo = new THREE.BufferGeometry();
 starGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-// Use imported image for the sprite
 const sprite = new THREE.TextureLoader().load(circleImg);
 const starMaterial = new THREE.PointsMaterial({
-  color: 0xffffff, // Make stars white
-  size: 1.2,       // Slightly bigger for more glow
+  color: 0xffffff,
+  size: 1.2,       // glow
   map: sprite,
   transparent: true,
-  blending: THREE.AdditiveBlending, // Additive blending for glow effect
+  blending: THREE.AdditiveBlending,
   depthWrite: false,
 });
 const stars = new THREE.Points(starGeo, starMaterial);
 scene.add(stars);
 
-// Smooth camera movement on scroll
+const torusGeometry = new THREE.TorusGeometry(30, 2, 16, 100);
+const torusMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+const torus = new THREE.Mesh(torusGeometry, torusMaterial);
+torus.position.set(60, 130, 0);
+scene.add(torus);
+
 let targetZ = camera.position.z;
 window.addEventListener('scroll', () => {
   targetZ = 1 - window.scrollY / 10;
@@ -46,7 +49,10 @@ animate();
 
 function animate() {
   requestAnimationFrame(animate);
-  // Smoothly interpolate camera position
   camera.position.z += (targetZ - camera.position.z) * 0.08;
+
+  torus.rotation.x += 0.01;
+  torus.rotation.y += 0.01;
+  
   renderer.render(scene, camera);
 }
