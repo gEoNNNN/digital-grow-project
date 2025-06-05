@@ -26,7 +26,7 @@ export function setupModal() {
       contactForm.addEventListener('submit', sendEmail);
     }
 
-    let isSending = false; // Add this at the top of setupModal or outside sendEmail
+    let isSending = false;
 
     function sendEmail(event) {
       event.preventDefault();
@@ -83,7 +83,6 @@ export function setupModal() {
             });
           }, 3000);
         }
-        // Keep the button disabled for 10 seconds even on error
         setTimeout(() => {
           if (submitBtn) submitBtn.disabled = false;
         }, 10000);
@@ -116,7 +115,6 @@ export function setupModal() {
               formMessage.textContent = '';
             }, 3000);
           }
-          // Keep the button disabled for 10 seconds after error
           setTimeout(() => {
             if (submitBtn) submitBtn.disabled = false;
           }, 10000);
