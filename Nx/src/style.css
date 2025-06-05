@@ -735,4 +735,86 @@ canvas {
     right: 2vw;
     line-height: 7vw;
   }
+   .modal_inner,
+  .modal_contact,
+  .modal_form_card,
+  .modal_form_card label,
+  .modal_form_card input,
+  .modal_form_card p {
+    font-size: 1.5vw;
+  }
+  .modal_text {
+    font-size: 3vw;
+    width: 60vw;
+  }
+}
+
+@media (max-width: 650px) {
+  .modal_inner,
+  .modal_contact,
+  .modal_form_card,
+  .modal_form_card label,
+  .modal_form_card input,
+  .modal_form_card p {
+    font-size: 2vw;
+  }
+  .modal_text {
+    font-size: 4vw;
+    width: 60vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .modal_inner,
+  .modal_contact,
+  .modal_form_card,
+  .modal_form_card label,
+  .modal_form_card input,
+  .modal_form_card p {
+    font-size: 3vw;
+  }
+  .modal_text {
+    font-size: 4vw;
+    width: 60vw;
+  }
+}
+
+@media (max-width: 1000px) {
+  .modal_form_card input[type="text"] {
+    font-size: 3vw;
+    padding: 1vw;
+    border-radius: 1vw;
+    width: 95%;
+  }
+  .modal_form_card input[type="submit"] {
+    font-size: 3vw;
+    padding: 1vw 4vw;
+    border-radius: 2vw;
+    margin-top: 2vw;
+  }
+}
+@media (max-width: 650px) {
+  .modal_form_card input[type="text"] {
+    font-size: 4vw;
+    padding: 1.5vw;
+    border-radius: 2vw;
+  }
+  .modal_form_card input[type="submit"] {
+    font-size: 4vw;
+    padding: 2vw 6vw;
+    border-radius: 3vw;
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 400px) {
+  .modal_inner {
+    width: 85vw;
+    padding: 3vw 1vw;
+    border-radius: 2vw;
+  }
+  .modal_contact, .modal_form_card {
+    max-width: 95vw;
+    width: 100%;
+    padding: 2vw 1vw;
+  }
 }
