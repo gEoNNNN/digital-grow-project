@@ -4,11 +4,12 @@ body {
   position: absolute;
   margin: 0;
   padding: 0;
-  min-height: 500vh;
+  min-height: 300vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  overflow-x: hidden;
 }
 
 canvas {
@@ -81,20 +82,6 @@ canvas {
   justify-content: center;
 }
 
-@media (max-width: 500px) {
-  .nav_bar {
-    width: 96vw;
-    height: 44px;
-    border-radius: 44px;
-    margin-top: 3vw;
-    min-width: 0;
-    max-width: 100vw;
-    padding: 0 2vw;
-  }
-  .horizontal-list {
-    font-size: 3vw;
-  }
-}
 
 .horizontal-list {
   margin-top: 0.8vw;
@@ -172,23 +159,35 @@ canvas {
   width: 100vw;
   min-height: 40vh;
   display: flex;
+  flex-direction: row; /* Change from column to row */
   justify-content: center;
   align-items: center;
   padding: 4vw 0;
   background: none;
+  gap: 10vw;
 }
 
 .about_container {
   color: #fff;
-  max-width: 800px;
-  width: 90vw;
-  margin: 0 auto;
+  max-width: 40vw;
+  width: 45vw;
+  margin: 0;
   font-size: 1.2rem;
   line-height: 1.7;
   padding: 2vw 3vw;
   border-radius: 2vw;
   background: #000000;
   box-shadow: 0 0 0.2vw #fff, 0 0 4vw #fff, 0 0 0.5vw #fff;
+  flex: 1 1 0;
+}
+
+.about_team_image {
+  width: 31vw;
+  border-radius: 2vw;
+  box-shadow: 0 0 0.2vw #fff, 0 0 2vw #fff, 0 0 0.5vw #fff;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin-top: 0;
 }
 
 .about_container h2 {
@@ -201,6 +200,7 @@ canvas {
 }
 
 .about_container p {
+  font-size: 1vw;
   font-family: Lexend Peta, sans-serif;
   opacity: 0;
   transform: translateY(40px);
@@ -212,4 +212,45 @@ canvas {
 .about_container p.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 500px) {
+  .nav_bar {
+    width: 96vw;
+    height: 44px;
+    border-radius: 44px;
+    margin-top: 3vw;
+    min-width: 0;
+    max-width: 100vw;
+    padding: 0 2vw;
+  }
+  .horizontal-list {
+    font-size: 3vw;
+  }
+}
+
+@media (max-width: 1200px) {
+  .home_company_name {
+    font-size: 6vw;
+    left: -12vw;
+  }
+
+  .home_text {
+    font-size: 1.5vw;
+    left: 0;
+    width: 50vw;
+    left: 13vw;
+  }
+   
+  .about_team_image{
+    width: 33vw;
+  }
+
+  .cool-btn {
+    margin-left: 0;
+    margin-top: 3vw;
+    font-size: 1.5vw;
+    padding: 1.3vw 3vw;
+    margin-left: 13vw;
+  }
 }
