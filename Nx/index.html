@@ -6,16 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
-    <script type="text/javascript">
-      (function(){
-          emailjs.init({
-            publicKey: "Tu2zTkVL7zPu63uip",
-          });
-      })();
-</script>
   </head>
   <body>
     <canvas id="bg"></canvas>
@@ -64,7 +54,7 @@
             </div>
             <div class="modal_form_card">
               <p>Sunt interesat(ă) în:</p>
-              <form action="/action_page.php">
+              <form action="/action_page.php" id="contactForm">
                 <input type="checkbox" id="web" name="web" value="Dezvoltare web">
                 <label for="web"> Dezvoltare web</label><br>
                 <input type="checkbox" id="app" name="app" value="Aplicații mobile">
@@ -111,6 +101,11 @@
         </ul>
       </div>
     </section>
+    <div id="formMessage"></div>
+     <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
